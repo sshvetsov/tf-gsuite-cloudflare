@@ -6,7 +6,7 @@ This terraform module makes it easy to create and manage common DNS records used
 
 ### No records created by default
 ```
-module test_domain {
+module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
     domain = "domain.com"
 }
@@ -14,7 +14,7 @@ module test_domain {
 
 ### Create default MX records only
 ```
-module test_domain {
+module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
     domain = "domain.com"
 
@@ -24,7 +24,7 @@ module test_domain {
 
 ### Create default MX and SPF records
 ```
-module test_domain {
+module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
     domain = "domain.com"
 
@@ -35,7 +35,7 @@ module test_domain {
 
 ### Create default MX, SPF records and add DKIM key
 ```
-module test_domain {
+module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
     domain = "domain.com"
 
@@ -47,7 +47,7 @@ module test_domain {
 
 ### Create common App CNAME records (mail, calendar, drive)
 ```
-module test_domain {
+module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
     domain = "domain.com"
 
@@ -57,7 +57,7 @@ module test_domain {
 
 ### Create custom App CNAME records
 ```
-module test_domain {
+module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
     domain = "domain.com"
 
@@ -73,7 +73,7 @@ module test_domain {
 
 ### Create apex and www records where www.domain.com --> domain.com
 ```
-module test_domain {
+module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
     domain = "domain.com"
 
@@ -84,7 +84,7 @@ module test_domain {
 
 ### Create apex and www records where domain.com --> ???.domain.com (eg. www)
 ```
-module test_domain {
+module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
     domain = "domain.com"
 
