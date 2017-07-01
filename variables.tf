@@ -4,7 +4,7 @@ variable "domain_name" {
 }
 
 /* Domain Apex Records */
-variable "apex_redirect_is_enabled" {
+variable "redirect_apex" {
   type        = "string"
   description = "(Optional) Whether zone apex redirection should be enabled."
   default     = false
@@ -25,13 +25,13 @@ variable "apex_redirect_values" {
 variable "apex_values" {
   type        = "list"
   description = "(Optional) List of IPs to point zone apex to."
-  default     = []
+  default     = [""]
 }
 
 variable "apex_is_proxied" {
   type        = "string"
   description = "(Optional) Whether zone apex records is proxied via Cloudflare."
-  default     = ""
+  default     = false
 }
 
 variable "apex_ttls" {
@@ -50,19 +50,19 @@ variable "redirect_www_to_apex" {
 variable "www_values" {
   type        = "list"
   description = "(Optional) List of destinations to point www records to."
-  default     = []
+  default     = [""]
 }
 
 variable "www_type" {
   type        = "string"
-  description = "(Optional) record type for www."
+  description = "(Optional) Record type for www."
   default     = "A"
 }
 
 variable "www_is_proxied" {
   type        = "string"
-  description = "(Optional) whether www records are proxied via Cloudflare."
-  default     = ""
+  description = "(Optional) Whether www records are proxied via Cloudflare."
+  default     = false
 }
 
 variable "www_ttls" {
@@ -94,7 +94,7 @@ variable "default_mx_values" {
 variable "default_mx_priorities" {
   type        = "list"
   description = "List of default priorities associated with default MX hostnames."
-  default     = ["1", "5", "5", "10", "10"]
+  default     = [1, 5, 5, 10, 10]
 }
 
 variable "default_mx_ttls" {
@@ -107,19 +107,19 @@ variable "default_mx_ttls" {
 variable "custom_mx_values" {
   type        = "list"
   description = "(Optional) List of hostnames to use for custom MX records."
-  default     = []
+  default     = [""]
 }
 
 variable "custom_mx_priorities" {
   type        = "list"
   description = "(Optional) List of priorities associated with MX hostnames."
-  default     = []
+  default     = [1]
 }
 
 variable "custom_mx_ttls" {
   type        = "list"
   description = "(Optional) List of TTL values to assign to MX records."
-  default     = [3600]
+  default     = [1]
 }
 
 /* SPF Records */
@@ -166,18 +166,6 @@ variable "app_cname_names" {
   ]
 }
 
-variable "app_cname_values" {
-  type        = "list"
-  description = "(Optional) List of G Suite App CNAME record values."
-  default     = ["ghs.googlehosted.com"]
-}
-
-variable "app_cname_ttls" {
-  type        = "list"
-  description = "(Optional) List of TTL values to assign to G Suite App CNAME records."
-  default     = [1]
-}
-
 /* Custom CNAME Records */
 variable "custom_cname_names" {
   type        = "list"
@@ -200,5 +188,5 @@ variable "custom_cname_ttls" {
 variable "custom_cname_is_proxied" {
   type        = "list"
   description = "(Optional) whether custom CNAME records should be proxied via Cloudflare."
-  default     = [""]
+  default     = [false]
 }

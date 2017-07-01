@@ -1,0 +1,277 @@
+## All Defaults
+### No records created by default
+module "test_01" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+}
+
+## MX records
+### Create default MX records
+module "test_02" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  use_default_mx_records = true
+}
+
+### Create custom MX records
+module "test_03" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  custom_mx_values = ["mx1.viragedanceco.com"]
+}
+
+### Create custom MX records w/ custom priorities
+module "test_04" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  custom_mx_values     = ["mx1.viragedanceco.com", "mx2.viragedanceco.com"]
+  custom_mx_priorities = [1, 5]
+}
+
+### Create custom MX records w/ custom priorities & ttls
+module "test_05" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  custom_mx_values     = ["mx1.viragedanceco.com", "mx2.viragedanceco.com"]
+  custom_mx_priorities = [10, 20]
+  custom_mx_ttls       = [60, 120]
+}
+
+## SPF records
+### Create default SPF record
+module "test_06" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  use_default_spf_record = true
+}
+
+### Create custom SPF record
+module "test_07" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  custom_spf_value = "v=spf1 include:spf.secureserver.net include:_spf.google.com -all"
+}
+
+## DKIM records
+### Create DKIM key record
+module "test_08" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  dkim_value = "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA..."
+}
+
+## App CNAME records
+### Create common App CNAME records (mail, calendar, drive)
+module "test_09" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  create_app_cname_records = true
+}
+
+### Create custom App CNAME records
+module "test_10" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  create_app_cname_records = true
+
+  app_cname_names = [
+    "webmail",
+    "cal",
+    "docs",
+    "pages",
+  ]
+}
+
+## Apex records
+### Create single IP apex record w/ default TTL
+module "test_11" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  apex_values = ["127.0.0.1"]
+}
+
+### Create multi-IP apex records w/ default TTLs
+module "test_12" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  apex_values = ["192.168.0.1", "192.168.0.2"]
+}
+
+### Create multip-IP apex records w/ custom TTLs
+module "test_13" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  apex_values = ["172.16.0.1", "172.16.0.2"]
+  apex_ttls   = [60, 120]
+}
+
+### Create proxied multip-IP apex records
+module "test_14" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  apex_values     = ["10.0.0.1", "10.0.0.2"]
+  apex_is_proxied = true
+}
+
+### Create apex redirect records (viragedanceco.com --> ???.viragedanceco.com)
+module "test_15" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  redirect_apex = true
+}
+
+### Create apex redirect records w/ custom TTL
+module "test_16" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  redirect_apex = true
+  apex_ttls     = [3600]
+}
+
+## WWW records
+### Create single IP www A-record w/ default TTL
+module "test_17" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  www_values = ["127.0.0.1"]
+}
+
+### Create multi-IP www A-records w/ default TTLs
+module "test_18" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  www_values = ["192.168.0.1", "192.168.0.2"]
+}
+
+### Create multip-IP www A-records w/ custom TTLs
+module "test_19" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  www_values = ["172.16.0.1", "172.16.0.2"]
+  www_ttls   = [60, 120]
+}
+
+### Create proxied multip-IP www A-records
+module "test_20" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  www_values     = ["10.0.0.1", "10.0.0.2"]
+  www_is_proxied = true
+}
+
+### Create single www CNAME-record w/ default TTL
+module "test_21" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  www_values = ["www1.viragedanceco.com"]
+  www_type   = "CNAME"
+}
+
+### Create single www CNAME-record w/ custom TTL
+module "test_22" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  www_values = ["www2.viragedanceco.com"]
+  www_type   = "CNAME"
+  www_ttls   = [300]
+}
+
+### Create single proxied www CNAME-record
+module "test_23" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  www_values     = ["www3.viragedanceco.com"]
+  www_type       = "CNAME"
+  www_is_proxied = true
+}
+
+### Redirect www record to apex (www --> viragedanceco.com)
+module "test_24" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  redirect_www_to_apex = true
+}
+
+### Redirect www record to apex w/ custom TTL
+module "test_25" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  redirect_www_to_apex = true
+  www_ttls             = [600]
+}
+
+## Custom CNAME records
+### Single custom CNAME-record w/ default TTL
+module "test_26" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  custom_cname_names  = ["blog"]
+  custom_cname_values = ["ghs.google.com"]
+}
+
+### Single custom CNAME-record w/ custom TTL
+module "test_27" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  custom_cname_names  = ["blog"]
+  custom_cname_values = ["ghs.google.com"]
+  custom_cname_ttls   = [1200]
+}
+
+### Single custom proxied CNAME-record w/ custom TTL
+module "test_28" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  custom_cname_names      = ["blog"]
+  custom_cname_values     = ["ghs.google.com"]
+  custom_cname_ttls       = [1200]
+  custom_cname_is_proxied = [true]
+}
+
+### Multiple custom CNAME-records w/ custom TTLs
+module "test_29" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  custom_cname_names  = ["blog", "github", "linkedin"]
+  custom_cname_values = ["ghs.google.com", "github.com", "linkedin.com"]
+  custom_cname_ttls   = [1, 3600, 86400]
+}
+
+### Multiple custom CNAME-records, some proxied w/ same custom TTL
+module "test_30" {
+  source      = "github.com/sshvetsov/tf-gsuite-cloudflare"
+  domain_name = "viragedanceco.com"
+
+  custom_cname_names      = ["blog", "github", "linkedin"]
+  custom_cname_values     = ["ghs.google.com", "github.com", "linkedin.com"]
+  custom_cname_ttls       = [600]
+  custom_cname_is_proxied = [true, false, false]
+}
