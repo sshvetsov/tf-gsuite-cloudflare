@@ -8,7 +8,7 @@ This terraform module makes it easy to create and manage common DNS records used
 ```
 module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
-    domain = "domain.com"
+    domain = "viragedanceco.com"
 }
 ```
 
@@ -16,7 +16,7 @@ module "test_domain" {
 ```
 module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
-    domain = "domain.com"
+    domain = "viragedanceco.com"
 
     use_default_mx_records = true
 }
@@ -26,7 +26,7 @@ module "test_domain" {
 ```
 module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
-    domain = "domain.com"
+    domain = "viragedanceco.com"
 
     use_default_mx_records = true
     use_default_spf_record = true
@@ -37,7 +37,7 @@ module "test_domain" {
 ```
 module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
-    domain = "domain.com"
+    domain = "viragedanceco.com"
 
     use_default_mx_records = true
     use_default_spf_record = true
@@ -49,7 +49,7 @@ module "test_domain" {
 ```
 module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
-    domain = "domain.com"
+    domain = "viragedanceco.com"
 
     create_app_cname_records = true
 }
@@ -59,7 +59,7 @@ module "test_domain" {
 ```
 module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
-    domain = "domain.com"
+    domain = "viragedanceco.com"
 
     create_app_cname_records = true
     app_cname_names = [
@@ -71,22 +71,22 @@ module "test_domain" {
 }
 ```
 
-### Create apex and www records where www.domain.com --> domain.com
+### Create apex and www records where www.viragedanceco.com --> viragedanceco.com
 ```
 module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
-    domain = "domain.com"
+    domain = "viragedanceco.com"
 
     apex_values = ["127.0.0.1"]
     redirect_www_to_apex = true
 }
 ```
 
-### Create apex and www records where domain.com --> ???.domain.com (eg. www)
+### Create apex and www records where viragedanceco.com --> ???.viragedanceco.com (eg. www)
 ```
 module "test_domain" {
     source = "github.com/sshvetsov/tf-gsuite-cloudflare"
-    domain = "domain.com"
+    domain = "viragedanceco.com"
 
     www_values = ["127.0.0.1"]
     apex_redirect_is_enabled = true
