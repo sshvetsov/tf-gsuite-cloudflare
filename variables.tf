@@ -151,7 +151,7 @@ variable "dkim_value" {
 /* App CNAME Records */
 variable "create_app_cname_records" {
   type        = "string"
-  descritpion = "(Optional) Whether common G Suite App CNAME records should be created."
+  description = "(Optional) Whether common G Suite App CNAME records should be created."
   default     = false
 }
 
