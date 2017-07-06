@@ -11,4 +11,4 @@ export CLOUDFLARE_EMAIL=your@email.com
 export CLOUDFLARE_TOKEN=1234secret0token56789
 ```
 
-See `tests/main.tf.sample` for detailed usage eaxmples
+See [/tests/main.tf.sample](/tests/main.tf.sample) for detailed usage examples.
